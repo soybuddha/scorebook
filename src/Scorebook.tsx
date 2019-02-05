@@ -2,13 +2,13 @@ import React from 'react';
 import moment from 'moment';
 
 import { BoxScore } from './components/BoxScore';
+import { AddTeam } from './components/AddTeam';
 // import { Hitters } from './components/Hitters';
 // import { Innings } from './components/Innings';
 // import { HittingStats } from './components/HittingStats';
 // import { Pitchers } from './components/Pitchers';
 // import { PitchingStats } from './components/PitchingStats';
 // import { GameNotes } from './components/GameNotes';
-
 
 import {
   // HitterLayout,
@@ -19,29 +19,29 @@ import {
 import { IntHitter, IntPitcher } from './interfaceDeclarations/scorebookInts';
 import { IntHalfInning } from './interfaceDeclarations/inningInts';
 
-interface IntTeamState {
+
+export interface IntTeamState {
   city: string,
   name: string,
   lineup: IntHitter[],
   pitchers: IntPitcher[],
 }
 
-// function initializeInnings(numberOfInnings: number): IntInning[] {
-//   const innings: IntInning[] = [];
-//   for (let i = 0; i < numberOfInnings; i += 1) {
-//     innings.push({ number: i + 1 });
-//   }
-//   return innings;
-// }
-
-interface IntScorebookProps {
-
+function initializeInnings(): Array<IntHalfInning[]> {
+  const innings: Array<IntHalfInning[]> = [];
+  for (let i = 0; i < 9; i += 1) {
+    const halfInning: IntHalfInning = { runs: 0, hits: 0, atBats: []};
+    innings.push([halfInning, halfInning]);
+  }
+  return innings;
 }
 
+interface IntScorebookProps {}
 interface IntScorebookState {
   date: number,
   startTime: void|number,
   endTime: void|number,
+  readyForScoring: boolean,
   location: string,
   homeTeam: IntTeamState,
   awayTeam: IntTeamState,
@@ -56,6 +56,7 @@ export class Scorebook extends React.Component<IntScorebookProps, IntScorebookSt
       date: moment().valueOf(),
       startTime: undefined,
       endTime: undefined,
+      readyForScoring: false,
       location: '',
       homeTeam: {
         city: '',
@@ -69,18 +70,25 @@ export class Scorebook extends React.Component<IntScorebookProps, IntScorebookSt
         lineup: [],
         pitchers: [],
       },
-      innings: [],
+      innings: initializeInnings(),
     }
   }
   
   render() {
     return (
       <MainLayout>
-        <BoxScore 
-          homeCity={this.state.homeTeam.city} 
-          awayCity={this.state.awayTeam.city} 
-          innings={this.state.innings}
-        />
+        {this.state.readyForScoring ? (
+          <BoxScore
+            homeCity={this.state.homeTeam.city}
+            awayCity={this.state.awayTeam.city}
+            innings={this.state.innings}
+          />
+        ) : (
+          <div>
+              <AddTeam side="Away Team" team={this.state.awayTeam} />
+              <AddTeam side="Home Team" team={this.state.awayTeam} />
+          </div>
+        )}
       </MainLayout>
     );
   }

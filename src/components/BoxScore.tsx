@@ -16,7 +16,6 @@ interface IntBoxScoreProps {
 }
 
 export function BoxScore(props: IntBoxScoreProps) {
-  debugger;
   return (
     <BoxScoreLayout>
       <div>
