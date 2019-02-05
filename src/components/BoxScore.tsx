@@ -1,9 +1,41 @@
 import React from 'react';
 
-interface IntBoxScoreProps {}
+import { 
+  BoxScoreLayout, 
+  BoxScoreInningLayout, 
+  InningLayout, 
+} from '../styled-components/Layout';
+import { Team } from '../styled-components/Global';
+
+import { IntHalfInning } from '../interfaceDeclarations/inningInts';
+
+interface IntBoxScoreProps {
+  homeCity: string,
+  awayCity: string,
+  innings: Array<IntHalfInning[]>,
+}
 
 export function BoxScore(props: IntBoxScoreProps) {
+  debugger;
   return (
-    <div>Box Score</div>
+    <BoxScoreLayout>
+      <div>
+        <Team>{props.awayCity}</Team>
+        <Team>{props.homeCity}</Team>
+      </div>
+      <BoxScoreInningLayout>
+        {props.innings.map((inning: IntHalfInning[], index: number) => (
+          <li key={`inning-${index}`}>
+            <InningLayout>
+              {inning.map((halfInning: IntHalfInning, halfIndex: number) => (
+                <li key={`inning-${index}-halfInning-${halfIndex}`}>
+                  {halfInning.runs}
+                </li>
+              ))}
+            </InningLayout>
+          </li>
+        ))}
+      </BoxScoreInningLayout>
+    </BoxScoreLayout>
   );
 }

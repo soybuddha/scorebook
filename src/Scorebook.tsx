@@ -1,44 +1,51 @@
 import React from 'react';
+import moment from 'moment';
 
 import { BoxScore } from './components/BoxScore';
-import { Hitters } from './components/Hitters';
-import { Innings } from './components/Innings';
-import { HittingStats } from './components/HittingStats';
-import { Pitchers } from './components/Pitchers';
-import { PitchingStats } from './components/PitchingStats';
-import { GameNotes } from './components/GameNotes';
+// import { Hitters } from './components/Hitters';
+// import { Innings } from './components/Innings';
+// import { HittingStats } from './components/HittingStats';
+// import { Pitchers } from './components/Pitchers';
+// import { PitchingStats } from './components/PitchingStats';
+// import { GameNotes } from './components/GameNotes';
 
 
 import {
-  HitterLayout,
+  // HitterLayout,
   MainLayout,
-  PitcherLayout,
+  // PitcherLayout,
 } from './styled-components/Layout';
 
-import { 
-  IntHitter, 
-  IntInning, 
-  IntPitcher, 
-} from './interfaceDeclarations/scorebookInts';
+import { IntHitter, IntPitcher } from './interfaceDeclarations/scorebookInts';
+import { IntHalfInning } from './interfaceDeclarations/inningInts';
 
-function initializeInnings(numberOfInnings: number): IntInning[] {
-  const innings: IntInning[] = [];
-
-  for (let i = 0; i < numberOfInnings; i += 1) {
-    innings.push({ number: i + 1 });
-  }
-
-  return innings;
+interface IntTeamState {
+  city: string,
+  name: string,
+  lineup: IntHitter[],
+  pitchers: IntPitcher[],
 }
+
+// function initializeInnings(numberOfInnings: number): IntInning[] {
+//   const innings: IntInning[] = [];
+//   for (let i = 0; i < numberOfInnings; i += 1) {
+//     innings.push({ number: i + 1 });
+//   }
+//   return innings;
+// }
 
 interface IntScorebookProps {
 
 }
 
 interface IntScorebookState {
-  hitters: IntHitter[],
-  pitchers: IntPitcher[],
-  innings: IntInning[],
+  date: number,
+  startTime: void|number,
+  endTime: void|number,
+  location: string,
+  homeTeam: IntTeamState,
+  awayTeam: IntTeamState,
+  innings: Array<IntHalfInning[]>,
 }
 
 export class Scorebook extends React.Component<IntScorebookProps, IntScorebookState> {
@@ -46,26 +53,34 @@ export class Scorebook extends React.Component<IntScorebookProps, IntScorebookSt
     super(props);
 
     this.state = {
-      hitters: [],
-      pitchers: [],
-      innings: initializeInnings(9),
+      date: moment().valueOf(),
+      startTime: undefined,
+      endTime: undefined,
+      location: '',
+      homeTeam: {
+        city: '',
+        name: '',
+        lineup: [],
+        pitchers: [],
+      },
+      awayTeam: {
+        city: '',
+        name: '',
+        lineup: [],
+        pitchers: [],
+      },
+      innings: [],
     }
   }
   
   render() {
     return (
       <MainLayout>
-        <BoxScore />
-        <HitterLayout>
-          <Hitters hitters={this.state.hitters} />
-          <Innings innings={this.state.innings} hitters={this.state.hitters} />
-          <HittingStats hitters={this.state.hitters} />
-        </HitterLayout>
-        <PitcherLayout>
-          <Pitchers pitchers={this.state.pitchers} />
-          <PitchingStats pitchers={this.state.pitchers} />
-        </PitcherLayout>
-        <GameNotes />
+        <BoxScore 
+          homeCity={this.state.homeTeam.city} 
+          awayCity={this.state.awayTeam.city} 
+          innings={this.state.innings}
+        />
       </MainLayout>
     );
   }
