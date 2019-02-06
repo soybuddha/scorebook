@@ -1,8 +1,8 @@
 import React from 'react';
 import moment from 'moment';
 
-import { BoxScore } from './components/BoxScore';
-import { AddTeam } from './components/AddTeam';
+import { BoxScore } from './components/BoxScore/BoxScore';
+import { CreateGame } from './components/CreateGame/CreateGame';
 // import { Hitters } from './components/Hitters';
 // import { Innings } from './components/Innings';
 // import { HittingStats } from './components/HittingStats';
@@ -84,10 +84,10 @@ export class Scorebook extends React.Component<IntScorebookProps, IntScorebookSt
             innings={this.state.innings}
           />
         ) : (
-          <div>
-              <AddTeam side="Away Team" team={this.state.awayTeam} />
-              <AddTeam side="Home Team" team={this.state.awayTeam} />
-          </div>
+            <CreateGame 
+              awayTeam={this.state.awayTeam}
+              homeTeam={this.state.homeTeam}
+            />
         )}
       </MainLayout>
     );

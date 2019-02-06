@@ -1,16 +1,17 @@
 import React from 'react';
 
-import { SectionTitle } from '../styled-components/Global';
-import { FormRow, FormField } from '../styled-components/Form';
+import { SectionTitle, SectionSubtitle } from '../../styled-components/Global';
+import { FormRow, FormField } from '../../styled-components/Form';
+import { AddTeamLayout } from './StyledCreateGame';
 
-import { IntTeamState } from '../Scorebook';
+import { IntTeamState } from '../../Scorebook';
 
 export function AddTeam(props: {
   side: string,
   team: IntTeamState,
 }) {
   return (
-    <div>
+    <AddTeamLayout>
       <SectionTitle>{props.side}</SectionTitle>
       <FormRow>
         <FormField>
@@ -22,6 +23,8 @@ export function AddTeam(props: {
           <input type="text" id="awayTeam" value={props.team.name} />
         </FormField>
       </FormRow>
-    </div>
+      <SectionSubtitle>Starting Pitcher</SectionSubtitle>
+      <SectionSubtitle>Lineup</SectionSubtitle>
+    </AddTeamLayout>
   );
 }

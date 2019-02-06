@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { 
-  BoxScoreLayout, 
+import {
+  BoxScoreLayout,
   BoxScoreInningLayout, 
-  InningLayout, 
-} from '../styled-components/Layout';
-import { Team } from '../styled-components/Global';
+  InningLayout,
+} from './StyledBoxScore';
+import { Team } from '../../styled-components/Global';
 
-import { IntHalfInning } from '../interfaceDeclarations/inningInts';
+import { IntHalfInning } from '../../interfaceDeclarations/inningInts';
 
 interface IntBoxScoreProps {
   homeCity: string,
