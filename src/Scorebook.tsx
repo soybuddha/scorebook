@@ -100,7 +100,6 @@ export class Scorebook extends React.Component<IntScorebookProps, IntScorebookSt
   }
 
   render() {
-    console.log(this.state);
     return (
       <MainLayout>
         {this.state.readyForScoring ? (
