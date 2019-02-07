@@ -1,33 +1,34 @@
 import React from 'react';
 
-import { TextInput } from '../../components/Form/TextInput';
+import { NumericInput, TextInput } from '../../components/Form/TextInput';
 import { RadioInput } from '../../components/Form/RadioInput';
 import { FormRow } from '../../components/Form/StyledForm';
 
 import { IntPitcher } from '../../interfaceDeclarations/scorebookInts';
 
 export function AddPitcher(props: {
+  id: string,
   pitcher: IntPitcher,
   onChange: (pitcher: IntPitcher) => void,
 }) {
   return (
     <div>
       <FormRow>
-        <TextInput 
-          id="pitcherNumber"
+        <NumericInput 
+          id={`${props.id}-number`}
           value={props.pitcher.number ? props.pitcher.number.toString() : undefined}
           label="#"
-          onChange={(id: string, value: string) => {
+          onChange={(id: string, value: number) => {
             const updatedPitcher: IntPitcher = {
               ...props.pitcher,
-              number: parseInt(value),
+              number: value,
             };
 
             props.onChange(updatedPitcher);
           }}
         />
         <TextInput
-          id="pitcherName"
+          id={`${props.id}-name`}
           value={props.pitcher.name}
           label="Name"
           onChange={(id: string, value: string) => {
@@ -39,13 +40,14 @@ export function AddPitcher(props: {
             props.onChange(updatedPitcher);
           }}
         />
-        <RadioInput
+        <RadioInput 
+          id={`${props.id}-throwing`}
           label="Throws"
-          name="pitcher-throwing"
+          name={`${props.id}-throwing`}
           options={[
-            { id: 'throwing-right',   value: 'R' },
-            { id: 'throwing-left',    value: 'L' },
-            { id: 'throwing-switch',  value: 'S' },
+            { id: `${props.id}-throwing-right`,   value: 'R' },
+            { id: `${props.id}-throwing-left`,    value: 'L' },
+            { id: `${props.id}-throwing-switch`,  value: 'S' },
           ]}
           value={props.pitcher.throwing}
           onChange={(id: string, value: string) => {
@@ -60,12 +62,13 @@ export function AddPitcher(props: {
           }}
         />
         <RadioInput
+          id={`${props.id}-hitting`}
           label="Hits"
-          name="pitcher-hitting"
+          name={`${props.id}-hitting`}
           options={[
-            { id: 'hitting-right', value: 'R' },
-            { id: 'hitting-left', value: 'L' },
-            { id: 'hitting-switch', value: 'S' },
+            { id: `${props.id}-hitting-right`, value: 'R' },
+            { id: `${props.id}-hitting-left`, value: 'L' },
+            { id: `${props.id}-hitting-switch`, value: 'S' },
           ]}
           value={props.pitcher.hitting}
           onChange={(id: string, value: string) => {

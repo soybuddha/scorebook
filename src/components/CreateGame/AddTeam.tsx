@@ -16,12 +16,13 @@ export function AddTeam(props: {
   team: IntTeamState,
   teamUpdate: (team: IntTeamState) => void,
 }) {
+  const id: string = props.side.toLowerCase().split(' ').join('-')
   return (
     <AddTeamLayout>
       <SectionTitle>{props.side}</SectionTitle>
       <FormRow>
         <TextInput
-          id="awayCity"
+          id={`${id}-team-location`}
           value={props.team.city}
           label="City"
           onChange={(id: string, value: string) => {
@@ -34,7 +35,7 @@ export function AddTeam(props: {
           }}
         />
         <TextInput
-          id="awayTeam"
+          id={`${id}-team-name`}
           value={props.team.name}
           label="Team Name"
           onChange={(id: string, value: string) => {
@@ -47,8 +48,9 @@ export function AddTeam(props: {
           }}
         />
         <RadioInput
-          label="Throws"
-          name="pitcher-throwing"
+          id={`${id}-league`}
+          label="League"
+          name={`${id}-league`}
           options={[
             { id: `${props.side}-al`, value: 'AL' },
             { id: `${props.side}-nl`, value: 'NL' },
@@ -68,6 +70,7 @@ export function AddTeam(props: {
       </FormRow>
       <SectionSubtitle>Starting Pitcher</SectionSubtitle>
       <AddPitcher
+        id={`${id}-starting-pitcher`}
         pitcher={props.team.pitchers[0]} 
         onChange={(pitcher: IntPitcher) => {
           const updatedTeam: IntTeamState = {
@@ -80,6 +83,7 @@ export function AddTeam(props: {
       />
       <SectionSubtitle>Lineup</SectionSubtitle>
       <AddLineup 
+        id={`${id}-lineup`}
         lineup={props.team.lineup}
         onChange={(lineup: IntHitter[]) => {
           const updatedTeam: IntTeamState = {
@@ -89,7 +93,7 @@ export function AddTeam(props: {
 
           props.teamUpdate(updatedTeam);
         }}        
-      />>
+      />
     </AddTeamLayout>
   );
 }

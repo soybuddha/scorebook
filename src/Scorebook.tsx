@@ -32,9 +32,9 @@ function initializeInnings(): Array<IntHalfInning[]> {
   return innings;
 }
 
-function initializePitcher(): IntPitcher[] {
+function initializePitcher(team: 'home'|'away'): IntPitcher[] {
   return [{
-    guid: '',
+    guid: `${team}-pitcher_0`,
     number: undefined,
     name: '',
     hitting: undefined,
@@ -42,8 +42,21 @@ function initializePitcher(): IntPitcher[] {
   }];
 }
 
-function initializeLineup(): IntHitter[] {
-  return [];
+function initializeLineup(team: 'home' | 'away'): IntHitter[] {
+  const lineup: IntHitter[] = [];
+
+  for (let i = 0; i < 9; i++) {
+    lineup.push({
+      guid: `${team}-hitter_${i}`,
+      position: undefined,
+      name: '',
+      number: undefined,
+      hitting: undefined,
+      throwing: undefined,  
+    })
+  }
+
+  return lineup;
 }
 
 interface IntScorebookProps {}
@@ -72,22 +85,22 @@ export class Scorebook extends React.Component<IntScorebookProps, IntScorebookSt
         city: '',
         name: '',
         league: undefined,
-        lineup: initializeLineup(),
-        pitchers: initializePitcher(),
+        lineup: initializeLineup('home'),
+        pitchers: initializePitcher('home'),
       },
       awayTeam: {
         city: '',
         name: '',
         league: undefined,
-        lineup: initializeLineup(),
-        pitchers: initializePitcher(),
+        lineup: initializeLineup('away'),
+        pitchers: initializePitcher('away'),
       },
       innings: initializeInnings(),
     }
   }
 
   render() {
-    console.log('STATE', JSON.stringify(this.state, null, 2));
+    console.log(this.state);
     return (
       <MainLayout>
         {this.state.readyForScoring ? (
@@ -106,6 +119,9 @@ export class Scorebook extends React.Component<IntScorebookProps, IntScorebookSt
               } else if (type === 'awayTeam') {
                 this.setState({ awayTeam: team });
               }
+            }}
+            createGame={() => {
+              this.setState({ readyForScoring: true });
             }}
           />
         )}

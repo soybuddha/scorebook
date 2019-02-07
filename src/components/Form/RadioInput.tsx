@@ -3,6 +3,7 @@ import React from 'react';
 import { IntFormOptions } from './IntForm';
 
 export function RadioInput(props: {
+  id: string,
   label: string,
   name: string,
   options: IntFormOptions[],
@@ -10,7 +11,7 @@ export function RadioInput(props: {
   onChange: (id: string, value: string) => void,
 }) {
   return (
-    <div>
+    <div id={props.id}>
       <span>{props.label}</span>
       {props.options.map((v: IntFormOptions, i:number) => (
         <label htmlFor={v.id} key={`${v.id}-${i}`}>

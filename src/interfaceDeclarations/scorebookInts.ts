@@ -2,7 +2,7 @@ import { IntHalfInning } from './inningInts';
 
 export interface IntHitter {
   guid: string,
-  position: number,
+  position: void|number,
   name: string,
   number: void|number,
   hitting: void | 'R' | 'L' | 'S',
