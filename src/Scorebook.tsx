@@ -16,16 +16,12 @@ import {
   // PitcherLayout,
 } from './styled-components/Layout';
 
-import { IntHitter, IntPitcher } from './interfaceDeclarations/scorebookInts';
+import { 
+  IntTeamState, 
+  IntHitter, 
+  IntPitcher, 
+} from './interfaceDeclarations/scorebookInts';
 import { IntHalfInning } from './interfaceDeclarations/inningInts';
-
-
-export interface IntTeamState {
-  city: string,
-  name: string,
-  lineup: IntHitter[],
-  pitchers: IntPitcher[],
-}
 
 function initializeInnings(): Array<IntHalfInning[]> {
   const innings: Array<IntHalfInning[]> = [];
@@ -34,6 +30,20 @@ function initializeInnings(): Array<IntHalfInning[]> {
     innings.push([halfInning, halfInning]);
   }
   return innings;
+}
+
+function initializePitcher(): IntPitcher[] {
+  return [{
+    guid: '',
+    number: undefined,
+    name: '',
+    hitting: undefined,
+    throwing: undefined,
+  }];
+}
+
+function initializeLineup(): IntHitter[] {
+  return [];
 }
 
 interface IntScorebookProps {}
@@ -61,20 +71,23 @@ export class Scorebook extends React.Component<IntScorebookProps, IntScorebookSt
       homeTeam: {
         city: '',
         name: '',
-        lineup: [],
-        pitchers: [],
+        league: undefined,
+        lineup: initializeLineup(),
+        pitchers: initializePitcher(),
       },
       awayTeam: {
         city: '',
         name: '',
-        lineup: [],
-        pitchers: [],
+        league: undefined,
+        lineup: initializeLineup(),
+        pitchers: initializePitcher(),
       },
       innings: initializeInnings(),
     }
   }
-  
+
   render() {
+    console.log('STATE', JSON.stringify(this.state, null, 2));
     return (
       <MainLayout>
         {this.state.readyForScoring ? (
@@ -84,10 +97,17 @@ export class Scorebook extends React.Component<IntScorebookProps, IntScorebookSt
             innings={this.state.innings}
           />
         ) : (
-            <CreateGame 
-              awayTeam={this.state.awayTeam}
-              homeTeam={this.state.homeTeam}
-            />
+          <CreateGame 
+            awayTeam={this.state.awayTeam}
+            homeTeam={this.state.homeTeam}
+            teamUpdate={(type: 'homeTeam'|'awayTeam', team: IntTeamState) => {
+              if (type === 'homeTeam') {
+                this.setState({ homeTeam: team });
+              } else if (type === 'awayTeam') {
+                this.setState({ awayTeam: team });
+              }
+            }}
+          />
         )}
       </MainLayout>
     );
