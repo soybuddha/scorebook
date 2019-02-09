@@ -53,6 +53,7 @@ export function CreateGame(props: {
   awayTeam: IntTeamState,
   homeTeam: IntTeamState,
   teamUpdate: (type: 'homeTeam'|'awayTeam', team: IntTeamState) => void,
+  createMockData: () => void,
   createGame: () => void,
 }) {
   return (
@@ -83,6 +84,16 @@ export function CreateGame(props: {
           }}
         >
           Create Game
+        </button>
+        <button
+          type="button"
+          className=""
+          onClick={(event) => {
+            event.preventDefault();
+            props.createMockData();
+          }}
+        >
+          Mock Game Data
         </button>
       </FormRow>
     </CreateGameLayout>

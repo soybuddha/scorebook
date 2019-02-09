@@ -2,19 +2,19 @@ import { IntHalfInning } from './inningInts';
 
 export interface IntHitter {
   guid: string,
-  position: void|number,
+  position: undefined|string,
   name: string,
-  number: void|number,
-  hitting: void | 'R' | 'L' | 'S',
-  throwing: void | 'R' | 'L',  
+  number: undefined|number,
+  hitting: undefined | 'R' | 'L' | 'S',
+  throwing: undefined | 'R' | 'L',  
 }
 
 export interface IntPitcher {
   guid: string,
-  number: void|number,
+  number: undefined|number,
   name: string,
-  hitting: void | 'R' | 'L' | 'S',
-  throwing: void | 'R' | 'L' | 'S',
+  hitting: undefined | 'R' | 'L' | 'S',
+  throwing: undefined | 'R' | 'L' | 'S',
 }
 
 export interface IntFranchise {
@@ -44,7 +44,7 @@ export interface IntGame {
 export interface IntTeamState {
   city: string,
   name: string,
-  league: void | 'AL' | 'NL',
+  league: undefined | 'AL' | 'NL',
   lineup: IntHitter[],
   pitchers: IntPitcher[],
 }

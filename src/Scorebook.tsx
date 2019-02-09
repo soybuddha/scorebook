@@ -1,6 +1,13 @@
 import React from 'react';
 import moment from 'moment';
 
+import { 
+  createHomeLineup,
+  createHomeStartingPitcher,
+  createAwayLineup,
+  createAwayStartingPitcher,
+} from './utils/createMockData';
+
 import { BoxScore } from './components/BoxScore/BoxScore';
 import { CreateGame } from './components/CreateGame/CreateGame';
 // import { Hitters } from './components/Hitters';
@@ -118,6 +125,25 @@ export class Scorebook extends React.Component<IntScorebookProps, IntScorebookSt
               } else if (type === 'awayTeam') {
                 this.setState({ awayTeam: team });
               }
+            }}
+            createMockData={() => {
+              this.setState({
+                readyForScoring: true,
+                homeTeam: {
+                  city: 'Texas',
+                  name: 'Rangers',
+                  league: 'AL',
+                  lineup: createHomeLineup(),
+                  pitchers: createHomeStartingPitcher(),
+                },
+                awayTeam: {
+                  city: 'Oakland',
+                  name: 'Athletics',
+                  league: 'AL',
+                  lineup: createAwayLineup(),
+                  pitchers: createAwayStartingPitcher(),
+                },
+              });
             }}
             createGame={() => {
               this.setState({ readyForScoring: true });

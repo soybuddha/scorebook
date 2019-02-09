@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { NumericInput, TextInput } from '../Form/TextInput';
+import { TextInput } from '../Form/TextInput';
 import { RadioInput } from '../Form/RadioInput';
 import { FormRow } from '../Form/StyledForm';
 
@@ -14,11 +14,11 @@ export function AddHitter(props: {
 }) {
   return (
     <FormRow>
-      <NumericInput
+      <TextInput
         id={`${props.id}-position-${props.order}`}
-        value={props.hitter.position ? props.hitter.position.toString() : undefined}
+        value={props.hitter.position}
         label="PO"
-        onChange={(id: string, value: number) => {
+        onChange={(id: string, value: string) => {
           const updatedHitter: IntHitter = {
             ...props.hitter,
             position: value,

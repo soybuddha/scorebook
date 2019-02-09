@@ -16,9 +16,9 @@ export function AddPitcher(props: {
       <FormRow>
         <NumericInput 
           id={`${props.id}-number`}
-          value={props.pitcher.number ? props.pitcher.number.toString() : undefined}
+          value={props.pitcher.number !== undefined ? props.pitcher.number : undefined}
           label="#"
-          onChange={(id: string, value: number) => {
+          onChange={(id: string, value: undefined | number) => {
             const updatedPitcher: IntPitcher = {
               ...props.pitcher,
               number: value,
