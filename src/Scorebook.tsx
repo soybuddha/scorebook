@@ -7,9 +7,11 @@ import {
   createAwayLineup,
   createAwayStartingPitcher,
 } from './utils/createMockData';
+import { teamAtBats } from './utils/statsUtils';
 
 import { BoxScore } from './components/BoxScore/BoxScore';
 import { CreateGame } from './components/CreateGame/CreateGame';
+import { Lineup } from './components/Lineup';
 // import { Hitters } from './components/Hitters';
 // import { Innings } from './components/Innings';
 // import { HittingStats } from './components/HittingStats';
@@ -25,46 +27,51 @@ import {
 
 import { 
   IntTeamState, 
-  IntHitter, 
-  IntPitcher, 
+  // IntHitter, 
+  // IntPitcher, 
 } from './interfaceDeclarations/scorebookInts';
 import { IntHalfInning } from './interfaceDeclarations/inningInts';
 
 function initializeInnings(): Array<IntHalfInning[]> {
   const innings: Array<IntHalfInning[]> = [];
   for (let i = 0; i < 9; i += 1) {
-    const halfInning: IntHalfInning = { runs: 0, hits: 0, atBats: []};
+    const halfInning: IntHalfInning = { 
+      runs: undefined, 
+      hits: undefined, 
+      errors: undefined, 
+      atBats: []
+    };
     innings.push([halfInning, halfInning]);
   }
   return innings;
 }
 
-function initializePitcher(team: 'home'|'away'): IntPitcher[] {
-  return [{
-    guid: `${team}-pitcher_0`,
-    number: undefined,
-    name: '',
-    hitting: undefined,
-    throwing: undefined,
-  }];
-}
+// function initializePitcher(team: 'home'|'away'): IntPitcher[] {
+//   return [{
+//     guid: `${team}-pitcher_0`,
+//     number: undefined,
+//     name: '',
+//     hitting: undefined,
+//     throwing: undefined,
+//   }];
+// }
 
-function initializeLineup(team: 'home' | 'away'): IntHitter[] {
-  const lineup: IntHitter[] = [];
+// function initializeLineup(team: 'home' | 'away'): IntHitter[] {
+//   const lineup: IntHitter[] = [];
 
-  for (let i = 0; i < 9; i++) {
-    lineup.push({
-      guid: `${team}-hitter_${i}`,
-      position: undefined,
-      name: '',
-      number: undefined,
-      hitting: undefined,
-      throwing: undefined,  
-    })
-  }
+//   for (let i = 0; i < 9; i++) {
+//     lineup.push({
+//       guid: `${team}-hitter_${i}`,
+//       position: undefined,
+//       name: '',
+//       number: undefined,
+//       hitting: undefined,
+//       throwing: undefined,  
+//     })
+//   }
 
-  return lineup;
-}
+//   return lineup;
+// }
 
 interface IntScorebookProps {}
 interface IntScorebookState {
@@ -76,6 +83,7 @@ interface IntScorebookState {
   homeTeam: IntTeamState,
   awayTeam: IntTeamState,
   innings: Array<IntHalfInning[]>,
+  displayedLineup: 'away'|'home',
 }
 
 export class Scorebook extends React.Component<IntScorebookProps, IntScorebookState> {
@@ -86,23 +94,39 @@ export class Scorebook extends React.Component<IntScorebookProps, IntScorebookSt
       date: moment().valueOf(),
       startTime: undefined,
       endTime: undefined,
-      readyForScoring: false,
+      // readyForScoring: false,
       location: '',
+      // homeTeam: {
+      //   city: '',
+      //   name: '',
+      //   league: undefined,
+      //   lineup: initializeLineup('home'),
+      //   pitchers: initializePitcher('home'),
+      // },
+      // awayTeam: {
+      //   city: '',
+      //   name: '',
+      //   league: undefined,
+      //   lineup: initializeLineup('away'),
+      //   pitchers: initializePitcher('away'),
+      // },
+      innings: initializeInnings(),
+      readyForScoring: true,
       homeTeam: {
-        city: '',
-        name: '',
-        league: undefined,
-        lineup: initializeLineup('home'),
-        pitchers: initializePitcher('home'),
+        city: 'Texas',
+        name: 'Rangers',
+        league: 'AL',
+        lineup: createHomeLineup(),
+        pitchers: createHomeStartingPitcher(),
       },
       awayTeam: {
-        city: '',
-        name: '',
-        league: undefined,
-        lineup: initializeLineup('away'),
-        pitchers: initializePitcher('away'),
+        city: 'Oakland',
+        name: 'Athletics',
+        league: 'AL',
+        lineup: createAwayLineup(),
+        pitchers: createAwayStartingPitcher(),
       },
-      innings: initializeInnings(),
+      displayedLineup: 'away',
     }
   }
 
@@ -110,11 +134,21 @@ export class Scorebook extends React.Component<IntScorebookProps, IntScorebookSt
     return (
       <MainLayout>
         {this.state.readyForScoring ? (
-          <BoxScore
-            homeCity={this.state.homeTeam.city}
-            awayCity={this.state.awayTeam.city}
-            innings={this.state.innings}
-          />
+          <React.Fragment>
+            <ul>
+              <li>{`${this.state.awayTeam.city} ${this.state.awayTeam.name}`}</li>
+              <li>{`${this.state.homeTeam.city} ${this.state.homeTeam.name}`}</li>
+            </ul>
+            <Lineup 
+              lineup={this.state.displayedLineup === 'home' ? this.state.homeTeam.lineup : this.state.awayTeam.lineup}
+              atBats={teamAtBats(this.state.innings, this.state.displayedLineup)}
+            />
+            <BoxScore
+              homeCity={this.state.homeTeam.city}
+              awayCity={this.state.awayTeam.city}
+              innings={this.state.innings}
+            />
+          </React.Fragment>
         ) : (
           <CreateGame 
             awayTeam={this.state.awayTeam}

@@ -30,7 +30,8 @@ export interface IntAtBat {
 }
 
 export interface IntHalfInning {
-  runs: number,
-  hits: number,
+  runs: undefined | number,
+  hits: undefined | number,
+  errors: undefined | number,
   atBats: IntAtBat[],
 }

@@ -9,6 +9,6 @@ export const SectionSubtitle = styled.span`
   display: block;
 `;
 
-export const Team = styled.span`
+export const Team = styled.div`
   font-weight: bold;
 `;
