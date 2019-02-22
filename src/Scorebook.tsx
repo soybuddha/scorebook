@@ -11,7 +11,7 @@ import { teamAtBats } from './utils/statsUtils';
 
 import { BoxScore } from './components/BoxScore/BoxScore';
 import { CreateGame } from './components/CreateGame/CreateGame';
-import { Lineup } from './components/Lineup';
+import { Lineup } from './components/Lineup/Lineup';
 // import { Hitters } from './components/Hitters';
 // import { Innings } from './components/Innings';
 // import { HittingStats } from './components/HittingStats';
@@ -31,6 +31,7 @@ import {
   // IntPitcher, 
 } from './interfaceDeclarations/scorebookInts';
 import { IntHalfInning } from './interfaceDeclarations/inningInts';
+import { TeamTabs, TeamButton } from './styled-components/Global';
 
 function initializeInnings(): Array<IntHalfInning[]> {
   const innings: Array<IntHalfInning[]> = [];
@@ -135,10 +136,28 @@ export class Scorebook extends React.Component<IntScorebookProps, IntScorebookSt
       <MainLayout>
         {this.state.readyForScoring ? (
           <React.Fragment>
-            <ul>
-              <li>{`${this.state.awayTeam.city} ${this.state.awayTeam.name}`}</li>
-              <li>{`${this.state.homeTeam.city} ${this.state.homeTeam.name}`}</li>
-            </ul>
+            <TeamTabs>
+              <li>
+                <TeamButton 
+                  selected={this.state.displayedLineup === 'away'}
+                  onClick={() => {
+                    this.setState({displayedLineup: 'away'});
+                  }}
+                >
+                  {`${this.state.awayTeam.city} ${this.state.awayTeam.name}`}
+                </TeamButton>
+              </li>
+              <li>
+                <TeamButton 
+                  selected={this.state.displayedLineup === 'home'}
+                  onClick={() => {
+                    this.setState({ displayedLineup: 'home' });
+                  }}
+                >
+                  {`${this.state.homeTeam.city} ${this.state.homeTeam.name}`}
+                </TeamButton>
+              </li>
+            </TeamTabs>
             <Lineup 
               lineup={this.state.displayedLineup === 'home' ? this.state.homeTeam.lineup : this.state.awayTeam.lineup}
               atBats={teamAtBats(this.state.innings, this.state.displayedLineup)}

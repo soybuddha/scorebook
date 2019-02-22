@@ -10,6 +10,7 @@ export const BoxScoreWrapper = styled.div`
   left: 0;
   right: 0;
   padding: 20px 0;
+  background-color: #ffffff;
 
   box-shadow: 0 15px 30px 10px rgba(0,0,0,.15);
 `;
