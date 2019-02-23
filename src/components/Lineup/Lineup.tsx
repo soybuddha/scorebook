@@ -3,12 +3,12 @@ import React from 'react';
 import { IntHitter } from '../../interfaceDeclarations/scorebookInts';
 import { IntHalfInning } from '../../interfaceDeclarations/inningInts';
 import { AtBat } from './AtBat';
-import { StatCount } from './StatCount';
+// import { StatCount } from './StatCount';
 
 import { UL } from '../../styled-components/Global';
 import { 
-  HittingStatsLayout,
-  HittingStat,
+  // HittingStatsLayout,
+  // HittingStat,
   InningTitle,
   LineupLayout, 
   LineupInnings,
@@ -16,6 +16,7 @@ import {
   LineupTitle, 
   Player,
   Position,
+  // StatTitle,
 } from './StyledLineup';
 
 export function Lineup(props: {
@@ -46,44 +47,46 @@ export function Lineup(props: {
           </li>
         ))}
       </LineupInnings>
+      { /*
       <HittingStatsLayout>
         <HittingStat>
-          <InningTitle><strong>AB</strong></InningTitle>
+          <StatTitle><strong>AB</strong></StatTitle>
           {props.lineup.map((hitter: IntHitter, index: number) => (
-            <StatCount />
+            <StatCount key={`ab-${index}`} />
           ))}
         </HittingStat>
         <HittingStat>
-          <InningTitle><strong>R</strong></InningTitle>
+          <StatTitle><strong>R</strong></StatTitle>
           {props.lineup.map((hitter: IntHitter, index: number) => (
-            <StatCount />
+            <StatCount key={`r-${index}`} />
           ))}
         </HittingStat>
         <HittingStat>
-          <InningTitle><strong>H</strong></InningTitle>
+          <StatTitle><strong>H</strong></StatTitle>
           {props.lineup.map((hitter: IntHitter, index: number) => (
-            <StatCount />
+            <StatCount key={`h-${index}`} />
           ))}
         </HittingStat>
         <HittingStat>
-          <InningTitle><strong>BB</strong></InningTitle>
+          <StatTitle><strong>BB</strong></StatTitle>
           {props.lineup.map((hitter: IntHitter, index: number) => (
-            <StatCount />
+            <StatCount key={`bb-${index}`} />
           ))}
         </HittingStat>
         <HittingStat>
-          <InningTitle><strong>LOB</strong></InningTitle>
+          <StatTitle><strong>LOB</strong></StatTitle>
           {props.lineup.map((hitter: IntHitter, index: number) => (
-            <StatCount />
+            <StatCount key={`lob-${index}`} />
           ))}
         </HittingStat>
         <HittingStat>
-          <InningTitle><strong>RBI</strong></InningTitle>
+          <StatTitle><strong>RBI</strong></StatTitle>
           {props.lineup.map((hitter: IntHitter, index: number) => (
-            <StatCount />
+            <StatCount key={`rbi-${index}`} />
           ))}
         </HittingStat>
       </HittingStatsLayout>
+          */}
     </LineupLayout>
   );
 }

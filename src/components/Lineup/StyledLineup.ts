@@ -63,12 +63,12 @@ export const InningTitle = styled.div`
 `;
 
 export const StyledAtBat = styled.div`
+  cursor: pointer;
   width: 80px;
   height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
-
 
   border-bottom: 1px solid #333;
   border-right: 1px solid #333;
@@ -111,8 +111,18 @@ export const Diamond = styled.div`
 
 export const HittingStat = styled.div``;
 
+export const StatTitle = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  padding: 5px;
+  border-bottom: 1px solid #333;
+  border-right: 1px solid #333;
+`;
+
 export const StyledStatCount = styled.div`
-  width: 80px;
+  width: 40px;
   height: 80px;
   display: flex;
   align-items: center;

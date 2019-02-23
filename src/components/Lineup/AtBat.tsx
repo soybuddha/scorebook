@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { 
   Diamond, 
@@ -6,9 +6,19 @@ import {
 } from './StyledLineup';
 
 export function AtBat(props: {}) {
-  return (
-    <StyledAtBat>
-      <Diamond />
-    </StyledAtBat>
-  );
+
+  const [focused, setFocus] = useState<boolean>(false);
+
+  if (focused) {
+    return (<div>FOCUSED!!!</div>)
+  } else {
+    return (
+      <StyledAtBat onClick={e => {
+        e.preventDefault();
+        setFocus(!focused);
+      }}>
+        <Diamond />
+      </StyledAtBat >
+    );
+  }
 }
