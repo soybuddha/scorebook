@@ -33,7 +33,6 @@ export const LineupRow = styled(LineupTitle)`
 
 export const LineupLayout = styled.div`
   display: flex;
-  margin: 25px 25px 171px;
 
   > ${UL} {
     border-top: 1px solid #333;

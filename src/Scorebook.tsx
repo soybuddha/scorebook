@@ -9,9 +9,9 @@ import {
 } from './utils/createMockData';
 import { teamAtBats } from './utils/statsUtils';
 
+import { TeamLayout } from './components/Team/TeamLayout';
 import { BoxScore } from './components/BoxScore/BoxScore';
 import { CreateGame } from './components/CreateGame/CreateGame';
-import { Lineup } from './components/Lineup/Lineup';
 // import { Hitters } from './components/Hitters';
 // import { Innings } from './components/Innings';
 // import { HittingStats } from './components/HittingStats';
@@ -158,9 +158,10 @@ export class Scorebook extends React.Component<IntScorebookProps, IntScorebookSt
                 </TeamButton>
               </li>
             </TeamTabs>
-            <Lineup 
+            <TeamLayout 
               lineup={this.state.displayedLineup === 'home' ? this.state.homeTeam.lineup : this.state.awayTeam.lineup}
               atBats={teamAtBats(this.state.innings, this.state.displayedLineup)}
+              pitchers={this.state.displayedLineup === 'home' ? this.state.homeTeam.pitchers : this.state.awayTeam.pitchers}
             />
             <BoxScore
               homeCity={this.state.homeTeam.city}
