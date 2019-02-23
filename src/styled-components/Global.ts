@@ -25,7 +25,6 @@ export const OL = styled.ol`
   list-style: none;
 `;
 
-
 export const HorizontalUL = styled(UL)`
   display: flex;
 `;
@@ -66,3 +65,4 @@ export const TeamTabs = styled(HorizontalUL)`
     }
   }
 `;
+
