@@ -46,6 +46,10 @@ export const TeamButton = styled.button`
 
 export const TeamTabs = styled(HorizontalUL)`
   justify-content: space-around;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
 
   > li {
     flex-grow: 1;

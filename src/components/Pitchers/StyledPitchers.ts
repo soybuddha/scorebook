@@ -13,32 +13,35 @@ export const PitcherLayout = styled.div`
   }
 `;
 
-export const PitcherNumber = styled.li`
+export const PitchingListItem = styled.li`
+  border-bottom: 1px solid #333;
+  border-right: 1px solid #333;
+  padding: 5px 8px;
+
+  &:first-child {
+    border-left: 1px solid #333;
+  }
+`;
+
+export const PitcherNumber = styled(PitchingListItem)`
   width: 35px;
 `;
 
-export const PitcherName = styled.li`
+export const PitcherName = styled(PitchingListItem)`
   min-width: 200px;
 `;
 
-export const PitcherStat = styled.li`
+export const PitcherStat = styled(PitchingListItem)`
   width: 50px;
-
-  strong {
-    display: flex;
-    justify-content: center;
-  }
+  display: flex;
+  justify-content: center;
 `;
 
 export const PitchingTitles = styled(HorizontalUL)`
-  
   > li {
-    border-bottom: 1px solid #333;
-    border-right: 1px solid #333;
-    padding: 5px 8px;
-
-    &:last-child {
-      border-right: none;
-    }
+    border-top: 1px solid #333;
   }
+`;
+
+export const Super = styled.span`
 `;

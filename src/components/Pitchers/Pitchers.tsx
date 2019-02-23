@@ -6,8 +6,28 @@ import {
   PitcherNumber,
   PitcherName,
   PitcherStat,
+  Super,
 } from './StyledPitchers';
 import { IntPitcher } from '../../interfaceDeclarations/scorebookInts';
+import { HorizontalUL, UL } from '../../styled-components/Global';
+
+export function Pitcher(props: {
+  pitcher: IntPitcher
+}) {
+  return (
+    <HorizontalUL>
+      <PitcherNumber>{props.pitcher.number}</PitcherNumber>
+      <PitcherName>{props.pitcher.name} {props.pitcher.throwing ? `(${props.pitcher.throwing})` : ''}</PitcherName>
+      <PitcherStat>0</PitcherStat>
+      <PitcherStat>0</PitcherStat>
+      <PitcherStat>0</PitcherStat>
+      <PitcherStat>0</PitcherStat>
+      <PitcherStat>0</PitcherStat>
+      <PitcherStat>0</PitcherStat>
+      <PitcherStat>0</PitcherStat>
+    </HorizontalUL>
+  );
+}
 
 export function PitchersLayout(props: {
   pitchers: IntPitcher[],
@@ -15,7 +35,7 @@ export function PitchersLayout(props: {
   return (
     <PitcherLayout>
       <PitchingTitles>
-        <PitcherNumber><strong>No</strong></PitcherNumber>
+        <PitcherNumber><strong>N<Super>o</Super></strong></PitcherNumber>
         <PitcherName><strong>Pitcher</strong></PitcherName>
         <PitcherStat><strong>IP</strong></PitcherStat>
         <PitcherStat><strong>H</strong></PitcherStat>
@@ -25,14 +45,13 @@ export function PitchersLayout(props: {
         <PitcherStat><strong>BF</strong></PitcherStat>
         <PitcherStat><strong>TP</strong></PitcherStat>
       </PitchingTitles>
-      <ul>
+      <UL>
         {props.pitchers.map((pitcher: IntPitcher, index: number) => (
           <li key={index}>
-            <div>{pitcher.number}</div>
-            <div>{pitcher.name} ({pitcher.throwing})</div>
+            <Pitcher pitcher={pitcher} />
           </li>
         ))}
-      </ul>
+      </UL>
     </PitcherLayout>
   );
 } 
