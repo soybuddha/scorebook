@@ -8,11 +8,15 @@ import {
 
 
 import { IntHitter, IntPitcher } from '../../interfaceDeclarations/scorebookInts';
+import { IntHalfInning } from '../../interfaceDeclarations/inningInts';
 
 export function ActiveAtBat(props: {
   hitter: IntHitter,
   pitcher: IntPitcher,
+  inningIndex: number,
+  inning: IntHalfInning,
   toggleAtBat: () => void;
+  onUpdateGame: (inning: IntHalfInning, inningIndex: number, team: 'away' | 'home') => void,
 }) {
   return (
     <ActiveAtBatWrapper>

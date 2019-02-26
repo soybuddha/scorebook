@@ -133,8 +133,14 @@ export function Scorebook() {
               ? awayTeam.pitchers[awayTeam.pitchers.length - 1] 
               : homeTeam.pitchers[homeTeam.pitchers.length - 1]
             }
-            onUpdateGame={(innings: Array<IntHalfInning[]>) => {
-              setInnings(innings);
+            onUpdateGame={(inning: IntHalfInning, inningIndex: number, team: 'away'|'home') => {
+              const updatedInnings = [...innings];
+              if (team === 'away') {
+                updatedInnings[inningIndex][0] = inning;
+              } else if (team === 'home') {
+                updatedInnings[inningIndex][1] = inning;
+              }
+              setInnings(updatedInnings);
             }}
           />
           <BoxScore

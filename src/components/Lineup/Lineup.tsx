@@ -23,6 +23,7 @@ export function Lineup(props: {
   lineup: IntHitter[],
   atBats: IntHalfInning[],
   onTheMound: IntPitcher,
+  onUpdateGame: (inning: IntHalfInning, inningIndex: number, team: 'away' | 'home') => void,
 }) {
   return (
     <LineupLayout>
@@ -46,8 +47,10 @@ export function Lineup(props: {
               <AtBat 
                 key={`inning-${index + 1}-atbat-${atBatIndex + 1}`} 
                 inningIndex={index}
+                inning={inning}
                 hitter={atBat}
                 pitcher={props.onTheMound}
+                onUpdateGame={props.onUpdateGame}
               />
             ))}
           </li>

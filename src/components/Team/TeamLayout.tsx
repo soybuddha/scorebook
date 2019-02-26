@@ -13,7 +13,7 @@ export function TeamLayout(props: {
   atBats: IntHalfInning[],
   pitchers: IntPitcher[],
   onTheMound: IntPitcher,
-  onUpdateGame: (innings: Array<IntHalfInning[]>) => void,
+  onUpdateGame: (inning: IntHalfInning, inningIndex: number, team: 'away'|'home') => void,
 }) {
   return (
     <Team>
@@ -21,6 +21,7 @@ export function TeamLayout(props: {
         lineup={props.lineup}
         atBats={props.atBats}
         onTheMound={props.onTheMound}
+        onUpdateGame={props.onUpdateGame}
       />
       <PitchersLayout pitchers={props.pitchers} />
     </Team>
