@@ -43,16 +43,23 @@ export function Lineup(props: {
         {props.atBats.map((inning: IntHalfInning, index: number) => (
           <li key={`inning-${index + 1}`}>
             <InningTitle><strong>{index + 1}</strong></InningTitle>
-            {props.lineup.map((atBat: IntHitter, atBatIndex: number) => (
-              <AtBat 
-                key={`inning-${index + 1}-atbat-${atBatIndex + 1}`} 
-                inningIndex={index}
-                inning={inning}
-                hitter={atBat}
-                pitcher={props.onTheMound}
-                onUpdateGame={props.onUpdateGame}
-              />
-            ))}
+            {props.lineup.map((atBat: IntHitter, atBatIndex: number) => {
+              console.log(inning.atBats.length);
+              if (inning.atBats.length > 0) {
+                // here is where we put exisiting at bats
+              }
+
+              return (
+                <AtBat 
+                  key={`inning-${index + 1}-atbat-${atBatIndex + 1}`} 
+                  inningIndex={index}
+                  inning={inning}
+                  hitter={atBat}
+                  pitcher={props.onTheMound}
+                  onUpdateGame={props.onUpdateGame}
+                />
+              );
+            })}
           </li>
         ))}
       </LineupInnings>

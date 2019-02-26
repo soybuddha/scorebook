@@ -1,10 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, MouseEvent } from 'react';
 
+import { StandardAtBat } from './StandardAtBat'; 
 import { ActiveAtBat } from './ActiveAtBat';
-import { 
-  Diamond, 
-  StyledAtBat, 
-} from '../AtBat/StyledAtBat';
 
 import { IntHalfInning } from '../../interfaceDeclarations/inningInts';
 import { IntHitter, IntPitcher } from '../../interfaceDeclarations/scorebookInts';
@@ -20,12 +17,14 @@ export function AtBat(props: {
 
   return (
     <React.Fragment>
-      <StyledAtBat onClick={e => {
-        e.preventDefault();
-        setFocus(!focused);
-      }}>
-        <Diamond />
-      </StyledAtBat >
+      <StandardAtBat 
+        inning={props.inning}
+        onClick={(e: MouseEvent<HTMLElement>) => {
+          e.preventDefault();
+          setFocus(!focused);
+        }}
+      />
+      
       {focused && (
         <ActiveAtBat 
           hitter={props.hitter}
