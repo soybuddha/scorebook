@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { IntHitter } from '../../interfaceDeclarations/scorebookInts';
+import { IntHitter, IntPitcher } from '../../interfaceDeclarations/scorebookInts';
 import { IntHalfInning } from '../../interfaceDeclarations/inningInts';
-import { AtBat } from './AtBat';
+import { AtBat } from '../AtBat/AtBat';
 // import { StatCount } from './StatCount';
 
 import { UL } from '../../styled-components/Global';
@@ -22,6 +22,7 @@ import {
 export function Lineup(props: {
   lineup: IntHitter[],
   atBats: IntHalfInning[],
+  onTheMound: IntPitcher,
 }) {
   return (
     <LineupLayout>
@@ -42,7 +43,12 @@ export function Lineup(props: {
           <li key={`inning-${index + 1}`}>
             <InningTitle><strong>{index + 1}</strong></InningTitle>
             {props.lineup.map((atBat: IntHitter, atBatIndex: number) => (
-              <AtBat key={`inning-${index + 1}-atbat-${atBatIndex + 1}`} />
+              <AtBat 
+                key={`inning-${index + 1}-atbat-${atBatIndex + 1}`} 
+                inningIndex={index}
+                hitter={atBat}
+                pitcher={props.onTheMound}
+              />
             ))}
           </li>
         ))}

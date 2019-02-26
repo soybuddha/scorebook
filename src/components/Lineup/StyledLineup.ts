@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import { OL, UL } from '../../styled-components/Global';
+import { StyledAtBat } from '../AtBat/StyledAtBat';
 
 export const LineupTitle = styled.li`
   display: flex;
@@ -62,18 +63,6 @@ export const InningTitle = styled.div`
   border-right: 1px solid #333;
 `;
 
-export const StyledAtBat = styled.div`
-  cursor: pointer;
-  width: 80px;
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border-bottom: 1px solid #333;
-  border-right: 1px solid #333;
-`;
-
 export const LineupInnings = styled(OL)`
   display: flex;
   list-style: none outside;
@@ -100,13 +89,6 @@ export const LineupInnings = styled(OL)`
       border-bottom: none;
     }
   }
-`;
-
-export const Diamond = styled.div`
-  border: 1px solid #ccc;
-  transform: rotate(45deg);
-  width: 45%;
-  height: 45%;
 `;
 
 export const HittingStat = styled.div``;
