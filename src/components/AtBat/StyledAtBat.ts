@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 
+export const ActiveAtBatDiamondWrapper = styled.div`
+  width: 400px;
+  height: 400px;
+`;
+
 export const Diamond = styled.div`
   border: 1px solid #ccc;
   transform: rotate(45deg);
@@ -49,4 +54,20 @@ export const CloseButton = styled.button`
   &:hover {
     color: #666;
   }
+`;
+
+export const ActiveAtBatLayout = styled.div`
+  display: flex;
+  min-height: 100%;
+`;
+
+export const ActiveAtBatMatchup = styled.div`
+  width: 30%;
+`;
+
+export const ActiveAtBatContent = styled.div`
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;

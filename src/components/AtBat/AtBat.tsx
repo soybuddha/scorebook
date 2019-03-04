@@ -24,7 +24,6 @@ export function AtBat(props: {
           setFocus(!focused);
         }}
       />
-      
       {focused && (
         <ActiveAtBat 
           hitter={props.hitter}
@@ -34,7 +33,7 @@ export function AtBat(props: {
           toggleAtBat={() => { setFocus(!focused); }}
           onUpdateGame={props.onUpdateGame}
         />
-  )}
+      )}
     </React.Fragment>
   );
 }

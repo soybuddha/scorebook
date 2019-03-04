@@ -45,7 +45,7 @@ export function Lineup(props: {
             <InningTitle><strong>{index + 1}</strong></InningTitle>
             {props.lineup.map((atBat: IntHitter, atBatIndex: number) => {
               console.log(inning.atBats.length);
-              if (inning.atBats.length > 0) {
+              if (inning.atBats[atBatIndex]) {
                 // here is where we put exisiting at bats
               }
 

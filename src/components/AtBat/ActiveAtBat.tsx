@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
+
+import { NewPitch } from './Pitch';
 
 import { 
+  ActiveAtBatLayout,
+  ActiveAtBatMatchup,
+  ActiveAtBatDiamondWrapper,
   ActiveAtBatWrapper, 
+  ActiveAtBatContent,
   CloseButton,
   Diamond,
 } from './StyledAtBat';
+import { UL } from '../../styled-components/Global';
 
 
 import { IntHitter, IntPitcher } from '../../interfaceDeclarations/scorebookInts';
-import { IntHalfInning } from '../../interfaceDeclarations/inningInts';
+import { IntHalfInning, IntPitch } from '../../interfaceDeclarations/inningInts';
 
 export function ActiveAtBat(props: {
   hitter: IntHitter,
@@ -18,20 +25,49 @@ export function ActiveAtBat(props: {
   toggleAtBat: () => void;
   onUpdateGame: (inning: IntHalfInning, inningIndex: number, team: 'away' | 'home') => void,
 }) {
+  const [pitches, setPitches] = useState<IntPitch[]>([]);
   return (
     <ActiveAtBatWrapper>
       <CloseButton 
         onClick={() => { props.toggleAtBat(); }}
       >&#x2715;</CloseButton>
-      <div style={{display: 'flex', minHeight: '100%'}}>
-        <div style={{width: '30%'}}>
-          {props.hitter.name}
-          {props.pitcher.name}
-        </div>
-        <div style={{width: '70%', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-          <Diamond />
-        </div>
-      </div>
+      <ActiveAtBatLayout>
+        <ActiveAtBatMatchup>
+          <div>
+            <h3>Pitching</h3>
+            {props.pitcher.name}
+          </div>
+          <div>
+            <h3>At Bat</h3>
+            {props.hitter.name}
+          </div>
+          {pitches.length > 0 && (
+            <div>
+              <h3>Pitches</h3>
+              <UL>
+                {pitches.map((pitch: IntPitch, index: number) => {
+                  <li key={`pitch-${index+1}`}>
+                    {index + 1}
+                    {pitch.result}
+                    {pitch.pitchType ? pitch.pitchType : ''}
+                    {pitch.speed ? pitch.speed : ''}
+                  </li>
+                })}
+              </UL>
+            </div>
+          )}
+        </ActiveAtBatMatchup>
+        <ActiveAtBatContent>
+          <ActiveAtBatDiamondWrapper>
+            <Diamond />
+          </ActiveAtBatDiamondWrapper>
+          <NewPitch 
+            onSavePitch={(pitch: IntPitch) => {
+              setPitches([...pitches, pitch]);
+            }}
+          />
+        </ActiveAtBatContent>
+      </ActiveAtBatLayout>
     </ActiveAtBatWrapper>
   );
 }

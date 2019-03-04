@@ -6,7 +6,8 @@ export type IntPitchResult = 'ball'
   | 'sac'   // sacrifice
   | 'hbp'   // hit by pitch
   | 'po'    // pitch-out
-  | 'balk';
+  | 'balk'
+  | '';
 
 export type IntAtBatResult = 'swinging-strike'
   | 'looking-strikeout'
