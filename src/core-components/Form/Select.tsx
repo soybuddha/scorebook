@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 
 import {
   StyledFormElementLabel,
@@ -17,9 +17,14 @@ export function Select(props: {
 }) {
   return (
     <StyledFormElementWrapper>
-      <StyledSelectElement>
+      <StyledSelectElement 
+        onChange={(event: ChangeEvent<HTMLSelectElement>) => { 
+          console.log(event.currentTarget)
+          props.onChange(event.currentTarget.id, event.currentTarget.value) 
+        }}
+      >
         {props.options.map((option: IntSelectOption, index: number) => (
-          <option key={`${option.value}-${index}`}>
+          <option key={`${option.value}-${index}`} value={option.value}>
             {option.displayed}
           </option>
         ))}

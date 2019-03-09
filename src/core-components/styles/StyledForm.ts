@@ -11,6 +11,7 @@ export const StyledInputElement = styled.input`
 
   &:hover, &:focus {
     border-color: #666;
+    outline: none;
   }
 `;
 
@@ -18,9 +19,13 @@ export const StyledSelectElement = styled.select`
   border: 1px solid #ccc;
   padding: 8px;
   font-size: 22px;
+  border-radius: 0;
+  background-color: #fff;
+  appearance: none;
 
   &:hover, &:focus {
     border-color: #666;
+    outline: none;
   }
 `;
 

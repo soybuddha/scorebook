@@ -34,6 +34,7 @@ export function NewPitch(props: {
           label="Type"
           value={currentPitch.pitchType ? currentPitch.pitchType : undefined}
           options={[
+            { value: '',              displayed: '' },
             { value: 'fast-ball',     displayed: 'Fast Ball' },
             { value: 'change-up',     displayed: 'Change Up' },
             { value: 'curve-ball',    displayed: 'Curve Ball' },
