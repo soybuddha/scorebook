@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { NumericField } from '../../core-components/Form/TextField';
+import { NumericField, TextField } from '../../core-components/Form/TextField';
 import { Select } from '../../core-components/Form/Select'
 import { IntPitch } from '../../typeDeclarations/typeInning';
 
@@ -11,6 +11,7 @@ export function NewPitch(props: {
   const [currentPitch, setCurrentPitch] = useState<IntPitch>({
     result: '',
   });
+  const [displayOtherPitcher, setOtherPitcher] = useState<boolean>(false);
 
   if (addingPitch) {
     return (
@@ -20,6 +21,7 @@ export function NewPitch(props: {
           label="Speed"
           min={0}
           max={120}
+          value={currentPitch.speed ? currentPitch.speed.toString() : undefined}
           onChange={(id: string, value: string) => {
             setCurrentPitch({
               ...currentPitch, 
@@ -30,14 +32,39 @@ export function NewPitch(props: {
         <Select
           id="pitch-type"
           label="Type"
-          options={[]}
+          value={currentPitch.pitchType ? currentPitch.pitchType : undefined}
+          options={[
+            { value: 'fast-ball',     displayed: 'Fast Ball' },
+            { value: 'change-up',     displayed: 'Change Up' },
+            { value: 'curve-ball',    displayed: 'Curve Ball' },
+            { value: 'breaking-ball', displayed: 'Breaking Ball' },
+            { value: 'other',         displayed: 'Other' },
+          ]}
           onChange={(id: string, value: string) => {
-            setCurrentPitch({
-              ...currentPitch,
-              pitchType: value,
-            });
+            if (value === 'other') {
+              setOtherPitcher(true);
+            } else {
+              setCurrentPitch({
+                ...currentPitch,
+                pitchType: value,
+              });
+            }
+            
           }}
         />
+        {displayOtherPitcher && (
+          <TextField
+            id="pitch-other-type"
+            label="Pitch Type"
+            value={currentPitch.pitchType ? currentPitch.pitchType : undefined}
+            onChange={(id: string, value: string) => {
+              setCurrentPitch({
+                ...currentPitch,
+                pitchType: value,
+              })
+            }}
+          />
+        )}
         <button 
           disabled={currentPitch.result === ''}
           onClick={() => {

@@ -10,6 +10,7 @@ import { IntSelectOption } from '../typeDeclarations/typeForm';
 
 export function Select(props: {
   id: string,
+  value: undefined|string,
   options: IntSelectOption[],
   label?: string,
   onChange: (id: string, value: string) => void,

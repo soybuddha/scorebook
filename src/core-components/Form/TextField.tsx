@@ -8,6 +8,7 @@ import {
 
 export function TextField(props: {
   id: string,
+  value: undefined|string,
   label?: string,
   onChange: (id: string, value: string) => void,
 }) {
@@ -17,6 +18,7 @@ export function TextField(props: {
       <StyledInputElement 
         id={props.id}
         type="text"
+        value={props.value}
         onChange={(event: FormEvent<HTMLInputElement>) => {
           props.onChange(event.currentTarget.id, event.currentTarget.value);
         }}
@@ -30,6 +32,7 @@ export function TextField(props: {
 
 export function NumericField(props: {
   id: string,
+  value: undefined|string,
   label?: string,
   min?: number,
   max?: number,
@@ -41,6 +44,7 @@ export function NumericField(props: {
       <StyledInputElement
         id={props.id}
         type="number"
+        value={props.value}
         min={props.min || undefined}
         max={props.max || undefined}
         onChange={(event: FormEvent<HTMLInputElement>) => {
