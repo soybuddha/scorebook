@@ -3,8 +3,8 @@ import React, { useState, MouseEvent } from 'react';
 import { StandardAtBat } from './StandardAtBat'; 
 import { ActiveAtBat } from './ActiveAtBat';
 
-import { IntHalfInning } from '../../interfaceDeclarations/inningInts';
-import { IntHitter, IntPitcher } from '../../interfaceDeclarations/scorebookInts';
+import { IntHalfInning } from '../../typeDeclarations/typeInning';
+import { IntHitter, IntPitcher } from '../../typeDeclarations/typeScorebook';
 
 export function AtBat(props: {
   inningIndex: number,

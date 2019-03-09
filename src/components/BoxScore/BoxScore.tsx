@@ -16,7 +16,7 @@ import {
   TeamSpacer,
 } from './StyledBoxScore';
 
-import { IntHalfInning } from '../../interfaceDeclarations/inningInts';
+import { IntHalfInning } from '../../typeDeclarations/typeInning';
 
 interface IntBoxScoreProps {
   homeCity: string,

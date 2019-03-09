@@ -3,8 +3,8 @@ import React from 'react';
 import { Lineup } from '../Lineup/Lineup';
 import { PitchersLayout } from '../Pitchers/Pitchers';
 
-import { IntHitter, IntPitcher } from '../../interfaceDeclarations/scorebookInts';
-import { IntHalfInning } from '../../interfaceDeclarations/inningInts';
+import { IntHitter, IntPitcher } from '../../typeDeclarations/typeScorebook';
+import { IntHalfInning } from '../../typeDeclarations/typeInning';
 
 import { Team } from './StyledTeam';
 

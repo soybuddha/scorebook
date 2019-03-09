@@ -1,4 +1,4 @@
-import { IntHalfInning } from './inningInts';
+import { IntHalfInning } from './typeInning';
 
 export interface IntHitter {
   guid: string,

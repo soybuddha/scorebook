@@ -29,8 +29,8 @@ import {
   IntTeamState, 
   // IntHitter, 
   // IntPitcher, 
-} from './interfaceDeclarations/scorebookInts';
-import { IntHalfInning } from './interfaceDeclarations/inningInts';
+} from './typeDeclarations/typeScorebook';
+import { IntHalfInning } from './typeDeclarations/typeInning';
 import { TeamTabs, TeamButton } from './styled-components/Global';
 
 function initializeInnings(): Array<IntHalfInning[]> {

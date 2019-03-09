@@ -14,8 +14,8 @@ import {
 import { UL } from '../../styled-components/Global';
 
 
-import { IntHitter, IntPitcher } from '../../interfaceDeclarations/scorebookInts';
-import { IntHalfInning, IntPitch } from '../../interfaceDeclarations/inningInts';
+import { IntHitter, IntPitcher } from '../../typeDeclarations/typeScorebook';
+import { IntHalfInning, IntPitch } from '../../typeDeclarations/typeInning';
 
 export function ActiveAtBat(props: {
   hitter: IntHitter,

@@ -1,4 +1,4 @@
-import { IntHitter, IntPitcher } from '../interfaceDeclarations/scorebookInts';
+import { IntHitter, IntPitcher } from '../typeDeclarations/typeScorebook';
 
 export function createHomeLineup(): IntHitter[] {
   return [

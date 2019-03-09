@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { IntPitcher } from '../interfaceDeclarations/scorebookInts';
+import { IntPitcher } from '../typeDeclarations/typeScorebook';
 
 interface IntPitchersProps {
   pitchers: IntPitcher[],

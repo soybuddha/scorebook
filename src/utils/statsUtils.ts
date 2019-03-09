@@ -1,4 +1,4 @@
-import { IntHalfInning } from '../interfaceDeclarations/inningInts';
+import { IntHalfInning } from '../typeDeclarations/typeInning';
 
 export function teamAtBats(
   innings: Array<IntHalfInning[]>,

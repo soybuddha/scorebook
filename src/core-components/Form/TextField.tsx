@@ -1,10 +1,10 @@
 import React, { FormEvent } from 'react';
 
 import { 
-  StyledTextInputLabel,
-  StyledTextInput, 
-  StyledTextInputWrapper,
-} from './StyledTextField';
+  StyledFormElementLabel,
+  StyledInputElement, 
+  StyledFormElementWrapper,
+} from '../styles/StyledForm';
 
 export function TextField(props: {
   id: string,
@@ -13,8 +13,8 @@ export function TextField(props: {
 }) {
 
   return (
-    <StyledTextInputWrapper>
-      <StyledTextInput 
+    <StyledFormElementWrapper>
+      <StyledInputElement 
         id={props.id}
         type="text"
         onChange={(event: FormEvent<HTMLInputElement>) => {
@@ -22,9 +22,9 @@ export function TextField(props: {
         }}
       />
       {props.label && (
-        <StyledTextInputLabel htmlFor={props.id}>{props.label}</StyledTextInputLabel>
+        <StyledFormElementLabel htmlFor={props.id}>{props.label}</StyledFormElementLabel>
       )}
-    </StyledTextInputWrapper>
+    </StyledFormElementWrapper>
   );
 }
 
@@ -37,8 +37,8 @@ export function NumericField(props: {
 }) {
   
   return (
-    <StyledTextInputWrapper>
-      <StyledTextInput
+    <StyledFormElementWrapper>
+      <StyledInputElement
         id={props.id}
         type="number"
         min={props.min || undefined}
@@ -48,8 +48,8 @@ export function NumericField(props: {
         }}
       />
       {props.label && (
-        <StyledTextInputLabel htmlFor={props.id}>{props.label}</StyledTextInputLabel>
+        <StyledFormElementLabel htmlFor={props.id}>{props.label}</StyledFormElementLabel>
       )}
-    </StyledTextInputWrapper>
+    </StyledFormElementWrapper>
   );
 }

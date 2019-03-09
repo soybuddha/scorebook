@@ -5,7 +5,7 @@ import { AddTeam } from './AddTeam';
 import { CreateGameLayout, CreateTeams } from './StyledCreateGame';
 import { FormRow } from '../Form/StyledForm';
 
-import { IntTeamState, IntHitter, IntPitcher } from '../../interfaceDeclarations/scorebookInts';
+import { IntTeamState, IntHitter, IntPitcher } from '../../typeDeclarations/typeScorebook';
 
 function validateLineup(lineup: IntHitter[]): boolean {
   let result: boolean = true;

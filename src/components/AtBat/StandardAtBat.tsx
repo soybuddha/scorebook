@@ -5,7 +5,7 @@ import {
   StyledAtBat,
 } from '../AtBat/StyledAtBat';
 
-import { IntHalfInning } from '../../interfaceDeclarations/inningInts';
+import { IntHalfInning } from '../../typeDeclarations/typeInning';
 
 export function StandardAtBat(props: {
   inning: IntHalfInning,

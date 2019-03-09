@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 
-import { NumericField } from '../../core-components/TextField/TextField';
-import { IntPitch } from '../../interfaceDeclarations/inningInts';
+import { NumericField } from '../../core-components/Form/TextField';
+import { Select } from '../../core-components/Form/Select'
+import { IntPitch } from '../../typeDeclarations/typeInning';
 
 export function NewPitch(props: {
   onSavePitch: (pitch: IntPitch) => void,
@@ -23,6 +24,17 @@ export function NewPitch(props: {
             setCurrentPitch({
               ...currentPitch, 
               speed: parseInt(value),
+            });
+          }}
+        />
+        <Select
+          id="pitch-type"
+          label="Type"
+          options={[]}
+          onChange={(id: string, value: string) => {
+            setCurrentPitch({
+              ...currentPitch,
+              pitchType: value,
             });
           }}
         />

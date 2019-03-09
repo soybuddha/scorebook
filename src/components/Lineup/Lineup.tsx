@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { IntHitter, IntPitcher } from '../../interfaceDeclarations/scorebookInts';
-import { IntHalfInning } from '../../interfaceDeclarations/inningInts';
+import { IntHitter, IntPitcher } from '../../typeDeclarations/typeScorebook';
+import { IntHalfInning } from '../../typeDeclarations/typeInning';
 import { AtBat } from '../AtBat/AtBat';
 // import { StatCount } from './StatCount';
 

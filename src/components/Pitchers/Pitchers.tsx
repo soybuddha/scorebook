@@ -8,7 +8,7 @@ import {
   PitcherStat,
   Super,
 } from './StyledPitchers';
-import { IntPitcher } from '../../interfaceDeclarations/scorebookInts';
+import { IntPitcher } from '../../typeDeclarations/typeScorebook';
 import { HorizontalUL, UL } from '../../styled-components/Global';
 
 export function Pitcher(props: {

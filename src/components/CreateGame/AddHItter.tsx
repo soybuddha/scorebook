@@ -4,7 +4,7 @@ import { TextInput } from '../Form/TextInput';
 import { RadioInput } from '../Form/RadioInput';
 import { FormRow } from '../Form/StyledForm';
 
-import { IntHitter } from '../../interfaceDeclarations/scorebookInts';
+import { IntHitter } from '../../typeDeclarations/typeScorebook';
 
 export function AddHitter(props: {
   id: string,

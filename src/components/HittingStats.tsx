@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { IntHitter } from '../interfaceDeclarations/scorebookInts';
+import { IntHitter } from '../typeDeclarations/typeScorebook';
 import { HittingStatsLayout } from '../styled-components/Layout';
 
 interface IntHittingStatsProps {

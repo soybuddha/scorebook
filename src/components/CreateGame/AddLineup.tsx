@@ -2,7 +2,7 @@ import React from 'react';
 
 import { AddHitter } from './AddHitter';
 
-import { IntHitter } from '../../interfaceDeclarations/scorebookInts';
+import { IntHitter } from '../../typeDeclarations/typeScorebook';
 
 export function AddLineup(props: {
   id: string,

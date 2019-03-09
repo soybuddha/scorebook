@@ -2,7 +2,7 @@ import React from 'react';
 
 import { PitchingStatsLayout } from '../styled-components/Layout';
 
-import { IntPitcher } from '../interfaceDeclarations/scorebookInts';
+import { IntPitcher } from '../typeDeclarations/typeScorebook';
 
 interface IntPitchingStatsProps {
   pitchers: IntPitcher[],

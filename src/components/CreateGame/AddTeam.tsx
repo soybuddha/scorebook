@@ -9,7 +9,7 @@ import { SectionTitle, SectionSubtitle } from '../../styled-components/Global';
 import { FormRow } from '../../components/Form/StyledForm';
 import { AddTeamLayout } from './StyledCreateGame';
 
-import { IntTeamState, IntHitter, IntPitcher } from '../../interfaceDeclarations/scorebookInts';
+import { IntTeamState, IntHitter, IntPitcher } from '../../typeDeclarations/typeScorebook';
 
 export function AddTeam(props: {
   side: string,

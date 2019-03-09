@@ -4,7 +4,7 @@ import { NumericInput, TextInput } from '../../components/Form/TextInput';
 import { RadioInput } from '../../components/Form/RadioInput';
 import { FormRow } from '../../components/Form/StyledForm';
 
-import { IntPitcher } from '../../interfaceDeclarations/scorebookInts';
+import { IntPitcher } from '../../typeDeclarations/typeScorebook';
 
 export function AddPitcher(props: {
   id: string,
