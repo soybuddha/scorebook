@@ -21,7 +21,7 @@ export function NewPitch(props: {
           label="Speed"
           min={0}
           max={120}
-          value={currentPitch.speed ? currentPitch.speed.toString() : undefined}
+          value={currentPitch.speed ? currentPitch.speed.toString() : ''}
           onChange={(id: string, value: string) => {
             setCurrentPitch({
               ...currentPitch, 
@@ -32,7 +32,7 @@ export function NewPitch(props: {
         <Select
           id="pitch-type"
           label="Type"
-          value={currentPitch.pitchType ? currentPitch.pitchType : undefined}
+          value={currentPitch.pitchType ? currentPitch.pitchType : ''}
           options={[
             { value: '',              displayed: '' },
             { value: 'fast-ball',     displayed: 'Fast Ball' },
@@ -57,7 +57,7 @@ export function NewPitch(props: {
           <TextField
             id="pitch-other-type"
             label="Pitch Type"
-            value={currentPitch.pitchType ? currentPitch.pitchType : undefined}
+            value={currentPitch.pitchType ? currentPitch.pitchType : ''}
             onChange={(id: string, value: string) => {
               setCurrentPitch({
                 ...currentPitch,
