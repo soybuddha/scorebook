@@ -43,8 +43,13 @@ export function NewPitch(props: {
           ]}
           onChange={(id: string, value: string) => {
             if (value === 'other') {
+              setCurrentPitch({
+                ...currentPitch,
+                pitchType: undefined,
+              });
               setOtherPitcher(true);
             } else {
+              setOtherPitcher(false);
               setCurrentPitch({
                 ...currentPitch,
                 pitchType: value,
@@ -79,6 +84,7 @@ export function NewPitch(props: {
         <button
           onClick={() => {
             setAddingPitch(false);
+            setOtherPitcher(false);
             setCurrentPitch({ result: '' });
           }}
         >

@@ -19,7 +19,6 @@ export function Select(props: {
     <StyledFormElementWrapper>
       <StyledSelectElement 
         onChange={(event: ChangeEvent<HTMLSelectElement>) => { 
-          console.log(event.currentTarget)
           props.onChange(event.currentTarget.id, event.currentTarget.value) 
         }}
       >
