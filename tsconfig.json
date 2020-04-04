@@ -24,6 +24,6 @@
     "suppressImplicitAnyIndexErrors": true
   },
   "include": [
-    "src"
+    "src", "index.tsx"
   ]
 }

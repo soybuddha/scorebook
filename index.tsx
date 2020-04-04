@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Scorebook } from './Scorebook';
-import * as serviceWorker from './serviceWorker';
+import { Scorebook } from './src/components/Scorebook';
+import * as serviceWorker from './src/serviceWorker';
 
 ReactDOM.render(<Scorebook />, document.getElementById('root'));
 

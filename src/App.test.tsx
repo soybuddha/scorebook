@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Scorebook } from './Scorebook';
+import { Scorebook } from './components/Scorebook';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
